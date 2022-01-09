@@ -895,6 +895,12 @@ func (p *BPFProg) SetAutoload(autoload bool) error {
 	return nil
 }
 
+func (p *BPFProg) Load() {
+	// C.bpf_prog_load(nil, 0, nil, nil)
+	// C.bpf_load_program()
+}
+
+// bpf_object__load
 func (p *BPFProg) Unload() {
 	C.bpf_program__unload(p.prog)
 }
