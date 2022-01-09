@@ -895,6 +895,10 @@ func (p *BPFProg) SetAutoload(autoload bool) error {
 	return nil
 }
 
+func (p *BPFProg) Unload() {
+	C.bpf_program__unload(p.prog)
+}
+
 func (p *BPFProg) SetTracepoint() error {
 	err := C.bpf_program__set_tracepoint(p.prog)
 	if err != 0 {
