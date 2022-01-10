@@ -9,7 +9,7 @@ CLANG = clang
 ARCH := $(shell uname -m)
 ARCH := $(subst x86_64,amd64,$(ARCH))
 
-BTFFILE = /sys/kernel/btf/vmlinux
+BTFFILE=/sys/kernel/btf/vmlinux
 BPFTOOL = $(shell which bpftool || /bin/false)
 GIT = $(shell which git || /bin/false)
 VMLINUXH = $(OUTPUT)/vmlinux.h
@@ -98,6 +98,7 @@ $(VMLINUXH): $(OUTPUT)
 		echo "INFO: generating $(VMLINUXH) from $(BTFFILE)"; \
 		$(BPFTOOL) btf dump file $(BTFFILE) format c > $(VMLINUXH); \
 	fi
+
 
 # static libbpf generation for the git submodule
 
